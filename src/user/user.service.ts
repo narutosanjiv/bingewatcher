@@ -12,4 +12,16 @@ export class UserService {
     const user = new this.userModel(createUser);
     return user.save();
   }
+
+  async validate(email: string, password: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.userModel.findOne({ email }, (err, user) => {
+        if (user.comparePassword(password)) {
+          resolve(user);
+        } else {
+          reject(new Error('Username/password incorrect'));
+        }
+      });
+    });
+  }
 }

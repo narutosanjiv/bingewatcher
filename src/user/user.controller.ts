@@ -19,7 +19,7 @@ export class UserController {
   @Client({
     transport: Transport.NATS,
     options: {
-      url: 'nats://localhost:4223',
+      url: 'nats://localhost:4224',
       /**
        * Use the "Identity" (de)serializers for observing messages for
        * nest-only deployment.
